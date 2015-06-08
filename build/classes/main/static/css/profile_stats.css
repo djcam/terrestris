@@ -1,0 +1,91 @@
+/*** SIDEBAR TOP ***/
+#profile_r1 {
+  height: 60px;
+}
+#profile_title {
+    height: 60px;
+    float: left;
+    display: block;
+    position: relative;
+}
+#profile_level {
+    display: block;
+    position: relative;
+    float: left;
+    border: 2px solid #34495E;
+    background-color: #FFFFFF;
+    line-height: 45px;
+    height: 50px;
+    width: 50px;
+    margin: 5px 15px 5px 0;
+    font-size: 30px;
+    /*text-shadow: -1px -1px 0 rgba(0,0,0,0.6);*/
+    color: #34495E;
+    border-radius: 30px;
+    text-align: center;
+    font-family: open-sans, monospace;
+}
+#profile_handle {
+    height: 40px;
+    line-height: 40px;
+    font-size: 30px;
+    color: #555555;
+    font-weight: 400;
+    text-shadow: -1px -1px 0 rgba(0,0,0,0.1);
+}
+#profile_class {
+    color: #999999;
+}
+
+/*** STATS ***/
+#profile_stats {
+  margin: 15px 0;
+}
+.progress_wrapper {
+  display: block;
+  position:relative;
+  margin: 8px 0 2px;
+  height: 8px;
+
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  
+  box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.15) inset;
+  -moz-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.15) inset;
+  -webkit-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.15) inset;
+
+}
+.progress_content {
+  height: 8px;
+  
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+}
+.green {
+    background-color: #90C695;
+}
+.blue {
+    background-color: #34495E;
+}
+.orange {
+    background-color: #FDE3A7;
+}
+
+.stats_labels {
+    font-size: 10px;
+    color: #AAAAAA;
+    height: 14px;
+    line-height: 14px;
+}
+.stats_label {
+    height: 14px;
+    line-height: 14px;
+}
+.stats_label.text {
+    float: left;
+}
+.stats_label.digits {
+    float: right;
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head></head>
+<body>
+
+<!--Teleport -->
+<div id="teleport_action" class="perk_action" th:fragment="teleport">
+	<form name="teleport_form" id="teleport_form" action="/api/perk/use">
+		<input type="hidden" value="0" name="perkid" />
+	    <select name="ypos" id="ypos">
+	    	<option value="-1">Select...</option>
+	    </select>
+	    <div class="conjunction">and</div>
+	    <select name="xpos" id="xpos">
+	    	<option value="-1">Select...</option>
+	    </select>
+	    <button id="use_teleport" class="perk_button use_perk green_grad">
+	    	Teleport
+	    </button>
+	</form>
+</div>
+
+<!--Rejuvenation -->
+<div id="rejuvenation_action" class="perk_action" th:fragment="rejuvenation">
+
+</div>
+
+<!--Drain -->
+<div id="drain_action" class="perk_action" th:fragment="drain">
+
+</div>
+
+<!--Annihilation -->
+<div id="annihilation_action" class="perk_action" th:fragment="annihilation">
+
+</div>
+
+<!--Larceny -->
+<div id="larceny_action" class="perk_action" th:fragment="larceny">
+
+</div>
+
+<!--Invisibility -->
+<div id="invisibility_action" class="perk_action" th:fragment="invisibility">
+
+</div>
+
+<!--Destruction -->
+<div id="destruction_action" class="perk_action" th:fragment="destruction">
+
+</div>
+
+<!--Unsurmountable -->
+<div id="unsurmountable_action" class="perk_action" th:fragment="unsurmountable">
+
+</div>
+
+<!--Construction -->
+<div id="construction_action" class="perk_action" th:fragment="construction">
+
+</div>
+
+<!--Perception -->
+<div id="perception_action" class="perk_action" th:fragment="perception">
+
+</div>
+
+</body>
+</html>

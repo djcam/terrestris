@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.terrestris.map.domain.UserTest" tests="0" skipped="0" failures="0" errors="0" timestamp="1970-01-01T00:00:00" hostname="CHI5PWSDCAMP3" time="0.0">
+  <properties/>
+  <system-out><![CDATA[2015-05-20 11:25:49.357  INFO 11140 --- [    Test worker] o.s.t.c.s.DefaultTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2015-05-20 11:25:49.357  INFO 11140 --- [    Test worker] o.s.t.c.s.DefaultTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@6602705f, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@70566908, org.springframework.test.context.support.DirtiesContextTestExecutionListener@3eb2bc9d, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1d2c0821, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@68591353]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="content">
+    <ul>
+        <li>
+            <span>RID</span>
+            <span>Road</span>
+            <span>Suffix</span>
+            <span>Direction</span>
+        </li>
+        <li th:each="road : ${roads}">
+            <span th:text="${road.rid}">1</span>
+            <span th:text="${road.rname}">Name</span>
+            <span th:text="${road.suffix}">Suffix</span>
+            <span th:text="${road.dir}">0</span>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

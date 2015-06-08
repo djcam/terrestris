@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="content" class="bounty_content">
+	<div id="profile_stats_wrapper" class="white_grad">
+	    <div id="profile_r1">
+	        <div id="profile_level" th:text="${profile.level}">1</div>
+	        <div id="profile_title">
+	            <div id="profile_handle" th:text="${profile.handle}">Handle</div>
+	            <div id="profile_class" th:text="${profile.rpgcid.rpgClass}">Class</div>
+	        </div>
+	    </div>
+	    <div id="profile_stats">
+	        <!-- STATS -->
+	        <div class="stat_wrapper" 
+	             th:each="stat: ${profileStats}"
+	             th:id="'stat_' + ${stat.stid.title}">
+	            <div class="progress_wrapper">
+	                <div class="progress_content"
+	                     th:classappend="${stat.stid.color}"
+	                     th:style="'width: ' + ${stat.ratio} + ';'">
+	                </div>
+	            </div>
+	            <div class="stats_labels">
+	                <span class="stats_label text" th:text="${stat.stid.title}">
+	                    Stamina
+	                </span>
+	                <span class="stats_label digits" th:text="${stat.value} + '/' + ${stat.max}">
+	                    150/300
+	                </span>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
+	<!--
+		<div id="engage_title">
+			<span class="bounty_name" th:text="${bounty.bname}">Bounty</span>
+			<span class="icon icon-heart-broken"></span>
+			<span class="bounty_value" th:text="${bounty.value}">Value</span>
+		</div>
+	-->
+	
+	<!--Active-->
+	<div th:if="${bounty.status == 1}" id="engage_wrapper">
+		<div id="engage_info" th:attr="data-bid=${bounty.bid}">
+			<p class="engage_desc">
+				You've found the <span class="keyword" th:text="${bounty.bname}">bname</span>. Your knuckles turn white as you approach the evil beast, but your resolve remains firm. The <span class="keyword" th:text="${bounty.value} + ' triste'">value</span> reward drifts from your thoughts. You require no compensation to pursue the unparalleled thrill of battle. Focusing on the task at hand, you comtemplate how to proceed.
+			</p>
+		</div>
+		<div id="engage_actions_wrapper">
+			<div id="engage_strike" class="engage_action white_grad" data-etype="1">
+				<span class="engage_text">Strike</span>
+				<span class="icon icon-eyedropper"></span>
+			</div>
+			<div id="engage_cast" class="engage_action white_grad" data-etype="2">
+				<span class="engage_text">Cast</span>
+				<span class="icon icon-magic-wand"></span>
+			</div>
+		</div>
+	</div>
+
+	<!--Complete-->
+	<div th:if="${bounty.status == 2}" id="engage_wrapper">
+		<div id="engage_info">
+			<p class="engage_info_main">You got it.</p>
+			<p class="engage_info_minor">Return to <span class="keyword" th:text="${bounty.lid.xpos.rname}"></span> and <span class="keyword" th:text="${bounty.lid.ypos.rname}"></span> to collect your reward.</p>
+		</div>
+	</div>
+	
+	<!--Cashed-->
+	<div th:if="${bounty.status == 3}" id="engage_wrapper">
+		<div id="engage_info">
+			You cashed it.
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

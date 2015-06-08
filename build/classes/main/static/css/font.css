@@ -1,0 +1,105 @@
+#content > div.font_content {
+	position: relative;
+	width: 800px;
+  	margin: 100px auto;
+}
+
+#font_wrapper {
+	width: 100%;
+	font-family: didact-gothic, Tahoma, sans-serif;
+	background-color: #1C2932;
+
+	opacity: 0.8;
+
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+
+}
+
+#font_graphic_wrapper,
+#font_info_wrapper,
+#font_actions_wrapper {
+	padding: 20px;
+}
+
+#font_graphic_wrapper {
+	text-align: center;
+	height: 160px;
+}
+#font_graphic {
+	height: 80px;
+	width: 80px;
+
+	padding: 20px;
+	margin: 20px;
+
+	border: 3px solid #EFEFEF;
+
+	border-radius: 40px;
+	-moz-border-radius: 40px;
+	-webkit-border-radius: 40px;
+}
+#font_graphic.icon.icon-road {
+	background-position: 22px -80px;
+}
+#font_info_wrapper {
+	background-color: #EFEFEF;
+	color: #10181E;
+	font-size: 20px;
+}
+#font_info_wrapper > p.font_desc {
+	padding: 0 20px;
+}
+#font_actions_wrapper {
+	height: 120px;
+
+	border-radius: 0 0 3px 3px;
+	-moz-border-radius: 0 0 3px 3px;
+	-webkit-border-radius: 0 0 3px 3px;
+}
+
+.engage_action {
+	height: 80px;
+	width: 300px;
+	margin: 0 auto;
+}
+.engage_text {
+	display: block;
+	position: relative;
+	width: 100%;
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+	vertical-align: bottom;
+	font-size: 18px;
+}
+#mana_full,
+#font_inactive {
+	color: #EFEFEF;
+	text-align: center;
+	font-size: 34px;
+	line-height: 80px;
+}
+#font_replenish.inactive,
+#font_inactive.active {
+	display: none
+}
+#font_timer {
+	height: 80px;
+	position: relative;
+	display: block;
+}
+.timer_title,
+.timer_content {
+	height: 80px;
+	position: relative;
+	display: block;
+	text-shadow: -1px -1px 0 rgba(0,0,0,0.6);
+}
+.timer_title {
+	float: left;
+}
+.timer_content {
+	float: right;
+}

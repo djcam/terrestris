@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="content">
+    <h1>Create a new profile</h1>
+
+    <form role="form" name="form" action="#" th:action="@{/profile/create}" th:object="${form}" method="post">
+        <ul th:if="${#fields.hasErrors('*')}">
+            <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
+        </ul>
+        <div>
+            <label for="handle">Handle</label>
+            <input type="text" name="handle" id="handle" th:field="*{handle}" />
+        </div>
+        <div>
+            <label for="rpgcid">Class</label>
+            <select name="rpgcid" id="rpgcid" th:field="*{rpgcid}">
+                <option th:each="rpgClass : ${rpgClasses}" th:value="${rpgClass.rpgcid}" th:text="${rpgClass.rpgClass}">Class Option</option>
+            </select>
+        </div>
+        <button type="submit">Save</button>
+    </form>
+</div>
+
+</body>
+</html>

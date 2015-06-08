@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="content" class="font_content">
+	<!--Active-->
+	<div id="font_wrapper">
+		<div id="font_graphic_wrapper" class="white_grad">
+			<span id="font_graphic" class="icon icon-road"></span>
+		</div>
+		<div id="font_info_wrapper">
+			<p class="font_desc">
+				The air thickens as you approach <span class="keyword" th:text="${font.fname}">fname</span>. A strange, almost electric, power begins to consume your extremities. It stalls, for you must grant it permission to fill your core. You inhale deeply and clear your mind before deciding whether to fully submit to the font or return to your travels.
+			</p>
+		</div>
+		<div th:if="${mana.max != mana.value}" 
+		     id="font_actions_wrapper" class="blue_grad">
+			<div id="font_replenish" 
+				 class="engage_action white_grad"
+				 th:classappend="(${font.active == true} ? 'active' : 'inactive')">
+				<span class="engage_text" 
+					  th:text="'Submit to ' + ${font.fname}">
+					 Submit
+				</span>
+				<span class="icon icon-infinite"></span>
+			</div>
+			<div id="font_inactive" 
+				 th:class="(${font.active == true} ? 'active' : 'inactive')">
+		        <div id="font_timer"
+		        	 th:attr="data-refill=${mana.refill}"
+		        	 th:attrappend="data-rate=${mana.rate}">
+		            <div class="timer_title">
+		            	Submission Cool Down
+		            </div>
+		            <div class="timer_content">
+		                <span id="t_min" class="t_content"></span>
+		                <label class="t_label"></label>
+		                <span id="t_sep" class="t_content">:</span>
+		                <span id="t_sec" class="t_content"></span>
+		                <label class="t_label"></label>
+		            </div>
+		        </div>
+			</div>
+		</div>
+		<div th:if="${mana.max == mana.value}" 
+		     id="font_actions_wrapper" class="blue_grad">
+		    <div id="mana_full">
+		    	You Require No Submission
+		    </div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

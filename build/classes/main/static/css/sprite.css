@@ -1,0 +1,330 @@
+.icon {
+	display: inline-block;
+	background-repeat: no-repeat;
+	background-image: url(../images/sprite.svg);
+}
+.icon-home3 {
+	width: 32px;
+	height: 32px;
+	background-position: 0 0;
+}
+.icon-office {
+	width: 32px;
+	height: 32px;
+	background-position: -48px 0;
+}
+.icon-eyedropper {
+	width: 32px;
+	height: 32px;
+	background-position: -96px 0;
+}
+.icon-droplet {
+	width: 32px;
+	height: 32px;
+	background-position: -144px 0;
+}
+.icon-dice {
+	width: 32px;
+	height: 32px;
+	background-position: -192px 0;
+}
+.icon-spades {
+	width: 32px;
+	height: 32px;
+	background-position: -240px 0;
+}
+.icon-clubs {
+	width: 32px;
+	height: 32px;
+	background-position: -288px 0;
+}
+.icon-diamonds {
+	width: 32px;
+	height: 32px;
+	background-position: -336px 0;
+}
+.icon-connection {
+	width: 40px;
+	height: 32px;
+	background-position: -384px 0;
+}
+.icon-feed {
+	width: 32px;
+	height: 32px;
+	background-position: -432px 0;
+}
+.icon-library {
+	width: 34px;
+	height: 32px;
+	background-position: -480px 0;
+}
+.icon-stack {
+	width: 32px;
+	height: 32px;
+	background-position: -528px 0;
+}
+.icon-price-tag {
+	width: 32px;
+	height: 32px;
+	background-position: -576px 0;
+}
+.icon-barcode {
+	width: 32px;
+	height: 32px;
+	background-position: -624px 0;
+}
+.icon-cart {
+	width: 32px;
+	height: 32px;
+	background-position: -672px 0;
+}
+.icon-lifebuoy {
+	width: 32px;
+	height: 32px;
+	background-position: -720px 0;
+}
+.icon-location {
+	width: 32px;
+	height: 32px;
+	background-position: -768px 0;
+}
+.icon-compass {
+	width: 32px;
+	height: 32px;
+	background-position: -816px 0;
+}
+.icon-compass2 {
+	width: 32px;
+	height: 32px;
+	background-position: -864px 0;
+}
+.icon-map {
+	width: 32px;
+	height: 32px;
+	background-position: -912px 0;
+}
+.icon-download {
+	width: 32px;
+	height: 32px;
+	background-position: -960px 0;
+}
+.icon-upload {
+	width: 32px;
+	height: 32px;
+	background-position: -1008px 0;
+}
+.icon-undo2 {
+	width: 32px;
+	height: 32px;
+	background-position: -1056px 0;
+}
+.icon-redo2 {
+	width: 32px;
+	height: 32px;
+	background-position: -1104px 0;
+}
+.icon-forward {
+	width: 32px;
+	height: 32px;
+	background-position: 0 -48px;
+}
+.icon-reply {
+	width: 32px;
+	height: 32px;
+	background-position: -48px -48px;
+}
+.icon-bubble {
+	width: 32px;
+	height: 32px;
+	background-position: -96px -48px;
+}
+.icon-bubbles {
+	width: 36px;
+	height: 32px;
+	background-position: -144px -48px;
+}
+.icon-user {
+	width: 32px;
+	height: 32px;
+	background-position: -192px -48px;
+}
+.icon-users {
+	width: 36px;
+	height: 32px;
+	background-position: -240px -48px;
+}
+.icon-search {
+	width: 32px;
+	height: 32px;
+	background-position: -288px -48px;
+}
+.icon-key {
+	width: 32px;
+	height: 32px;
+	background-position: -336px -48px;
+}
+.icon-lock {
+	width: 32px;
+	height: 32px;
+	background-position: -384px -48px;
+}
+.icon-cog {
+	width: 32px;
+	height: 32px;
+	background-position: -432px -48px;
+}
+.icon-magic-wand {
+	width: 32px;
+	height: 32px;
+	background-position: -480px -48px;
+}
+.icon-aid-kit {
+	width: 32px;
+	height: 32px;
+	background-position: -528px -48px;
+}
+.icon-pie-chart {
+	width: 32px;
+	height: 32px;
+	background-position: -576px -48px;
+}
+.icon-stats-dots {
+	width: 32px;
+	height: 32px;
+	background-position: -624px -48px;
+}
+.icon-stats-bars {
+	width: 32px;
+	height: 32px;
+	background-position: -672px -48px;
+}
+.icon-stats-bars2 {
+	width: 32px;
+	height: 32px;
+	background-position: -720px -48px;
+}
+.icon-trophy {
+	width: 32px;
+	height: 32px;
+	background-position: -768px -48px;
+}
+.icon-glass {
+	width: 32px;
+	height: 32px;
+	background-position: -816px -48px;
+}
+.icon-glass2 {
+	width: 32px;
+	height: 32px;
+	background-position: -864px -48px;
+}
+.icon-mug {
+	width: 32px;
+	height: 32px;
+	background-position: -912px -48px;
+}
+.icon-hammer2 {
+	width: 32px;
+	height: 32px;
+	background-position: -960px -48px;
+}
+.icon-fire {
+	width: 32px;
+	height: 32px;
+	background-position: -1008px -48px;
+}
+.icon-lab {
+	width: 32px;
+	height: 32px;
+	background-position: -1056px -48px;
+}
+.icon-magnet {
+	width: 32px;
+	height: 32px;
+	background-position: -1104px -48px;
+}
+.icon-road {
+	width: 32px;
+	height: 32px;
+	background-position: 0 -96px;
+}
+.icon-accessibility {
+	width: 32px;
+	height: 32px;
+	background-position: -48px -96px;
+}
+.icon-target {
+	width: 32px;
+	height: 32px;
+	background-position: -96px -96px;
+}
+.icon-shield {
+	width: 32px;
+	height: 32px;
+	background-position: -144px -96px;
+}
+.icon-power {
+	width: 32px;
+	height: 32px;
+	background-position: -192px -96px;
+}
+.icon-switch {
+	width: 32px;
+	height: 32px;
+	background-position: -240px -96px;
+}
+.icon-flag {
+	width: 32px;
+	height: 32px;
+	background-position: -288px -96px;
+}
+.icon-eye {
+	width: 32px;
+	height: 32px;
+	background-position: -336px -96px;
+}
+.icon-bookmark {
+	width: 32px;
+	height: 32px;
+	background-position: -384px -96px;
+}
+.icon-star-full {
+	width: 32px;
+	height: 32px;
+	background-position: -432px -96px;
+}
+.icon-heart-broken {
+	width: 32px;
+	height: 32px;
+	background-position: -480px -96px;
+}
+.icon-plus {
+	width: 32px;
+	height: 32px;
+	background-position: -528px -96px;
+}
+.icon-minus {
+	width: 32px;
+	height: 32px;
+	background-position: -576px -96px;
+}
+.icon-cross {
+	width: 32px;
+	height: 32px;
+	background-position: -624px -96px;
+}
+.icon-checkmark {
+	width: 32px;
+	height: 32px;
+	background-position: -672px -96px;
+}
+.icon-infinite {
+	width: 32px;
+	height: 32px;
+	background-position: -720px -96px;
+}
+.icon-command {
+	width: 32px;
+	height: 32px;
+	background-position: -768px -96px;
+}

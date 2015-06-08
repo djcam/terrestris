@@ -1,0 +1,30 @@
+.icon {
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	fill: currentColor;
+}
+
+/* ==========================================================================
+Example showing how to change the color/size of the icons:
+.icon-name {
+	font-size: 32px;
+	fill: red;
+}
+========================================================================== */
+
+.icon-connection {
+	width: 1.25em;
+}
+
+.icon-library {
+	width: 1.0625em;
+}
+
+.icon-bubbles {
+	width: 1.125em;
+}
+
+.icon-users {
+	width: 1.125em;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="content">
+
+    <div class="t-table-wrapper">
+        <form id="users_form" class="pag_form" action="#">
+            <input type="text" id="start" name="start" />
+            <input type="text" id="page_size" name="page_size" />
+            <button id="submit">Submit</button>
+
+            <div class="t-table-title">
+                List of Users
+            </div>
+            <div class="t-table-pag top-pag">
+                <span class="t-table-pag-item" id="pag-first">First</span>
+                <span class="t-table-pag-item" id="pag-prev">Previous</span>
+
+                <span class="t-table-pag-item" id="pag-next-set">...</span>
+
+                <span class="t-table-pag-item pag-current" id="pag-1">1</span>
+                <span class="t-table-pag-item" id="pag-2">2</span>
+                <span class="t-table-pag-item" id="pag-3">3</span>
+                <span class="t-table-pag-item" id="pag-4">4</span>
+                <span class="t-table-pag-item" id="pag-5">5</span>
+
+                <span class="t-table-pag-item" id="pag-next-set">...</span>
+
+                <span class="t-table-pag-item" id="pag-next">Next</span>
+                <span class="t-table-pag-item" id="pag-last">Last</span>
+            </div>
+            <table class="t-table">
+                <thead>
+                    <tr>
+                        <th class="first">E-mail</th>
+                        <th>First</th>
+                        <th>Last</th>
+                        <th>Gender</th>
+                        <th>Status</th>
+                        <th class="last">Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="user,itr : ${users}" 
+                        th:class="${itr.odd} ? 'odd' : 'even'"
+                        th:classappend="(${itr.first} ? 'first' : (${itr.last} ? 'last'))">
+                        <td class="first"><a th:href="@{/user/{uid}(uid=${user.uid})}" th:text="${user.email}"></a></td>
+                        <td th:text="${user.first}"></td>
+                        <td th:text="${user.last}"></td>
+                        <td th:text="${user.gender}"></td>
+                        <td th:text="${user.status}"></td>
+                        <td class="last" th:text="${user.role}"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="t-table-pag bottom-pag"></div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

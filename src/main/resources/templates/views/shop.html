@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div id="content" th:fragment="content">
+	<div class="tables_wrapper clearfix">		
+		
+		<div class="table_wrapper" 
+			 th:attr="id=${inventory[0].ACTION}" 
+			 th:each="inventory : ${inventoryList}">
+			<div class="table_title_row">
+				<div class="table_title_section title_left">
+					<span class="table_title" 
+						  th:text="${inventory[0].getTitle()}">
+						Title
+					</span>
+				</div>
+				<div class="table_title_section title_right"
+					 th:if="${inventory[0].ACTION == 'Sell'}">
+					<span id="triste_value"
+						  class="table_title"
+			  			  th:text="${profile.triste}">
+						10000
+					</span>
+					<span class="icon icon-heart-broken"></span>
+				</div>
+			</div>
+			<table class="inventory_table">
+				<tr th:each="inv,itr : ${inventory}" 
+                    th:attr="data-iid=${inv.iid.iid}"
+                    th:class="${itr.odd} ? 'odd' : 'even'">
+					<td th:text="${inv.iid.item}">Item</td>
+					<td class="item_value"
+						th:attr="data-value=${inv.getPrice()}"
+						th:text="${inv.getPrice()}">
+						Value
+					</td>
+					<td class="item_count"
+						th:attr="data-count=${inv.count}"
+						th:text="${inv.count}">Count</td>
+					<td>
+						<form>
+							<div class="drop_wrapper clearfix">
+								<input type="hidden" name="type" th:value="${inv.ACTION}" />
+								<button class="drop_button"
+										th:text="${inv.ACTION}">
+										Action
+								</button>
+								<select class="drop_select"
+									    th:if="(${inv.ACTION} == 'Buy')" th:name="${inv.invid}">
+									<option th:each="i : ${#numbers.sequence(1, inv.count)}"
+											th:value="${i}" th:text="${i}">
+									</option>
+								</select>
+								<select class="drop_select"
+									    th:if="(${inv.ACTION} == 'Sell')" th:name="${inv.invid}">
+									<option th:each="i : ${#numbers.sequence(inv.count, 1)}"
+											th:value="${i}" th:text="${i}">
+									</option>
+								</select>
+							</div>
+						</form>
+					</td>
+					<td class="total_target">
+						<span th:if="(${inv.ACTION} == 'Buy')" th:text="${inv.getPrice()}"></span>
+						<span th:if="(${inv.ACTION} == 'Sell')" th:text="${inv.getPrice() * inv.count}"></span>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

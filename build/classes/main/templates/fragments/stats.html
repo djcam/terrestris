@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head></head>
+<body>
+
+<!--Profile Stats -->
+<div id="profile_stats_wrapper" class="stats_wrapper" th:fragment="stats_wrapper" th:unless="(${profile} == null)">
+    <div id="profile_r1">
+        <div id="profile_level" th:text="${profile.level}">1</div>
+        <div id="profile_title">
+            <div id="profile_handle" th:text="${profile.handle}">Handle</div>
+            <div id="profile_class" th:text="${profile.rpgcid.rpgClass}">Class</div>
+        </div>
+    </div>
+
+    <div id="profile_timer">
+        <div class="timer_title">sp +1</div>
+        <div class="timer_content">
+            <span id="t_min" class="t_content"></span>
+            <label class="t_label"></label>
+            <span id="t_sep" class="t_content">:</span>
+            <span id="t_sec" class="t_content"></span>
+            <label class="t_label"></label>
+        </div>
+    </div>
+
+    <!--PROGRESS BARS -->
+    <div id="profile_stats">
+        <!-- STATS -->
+        <div class="stat_wrapper" 
+             th:each="stat: ${profileStats}"
+             th:id="'stat_' + ${stat.stid.title}"
+             th:attr="data-refill=${stat.refill}"
+             th:attrappend="data-rate=${stat.rate}">
+            <div class="progress_wrapper">
+                <div class="progress_content"
+                     th:classappend="${stat.stid.color}"
+                     th:style="'width: ' + ${stat.ratio} + ';'">
+                </div>
+            </div>
+            <div class="stats_labels">
+                <span class="stats_label text" th:text="${stat.stid.title}">
+                    Stamina
+                </span>
+                <span class="stats_label digits" th:text="${stat.value} + '/' + ${stat.max}">
+                    150/300
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

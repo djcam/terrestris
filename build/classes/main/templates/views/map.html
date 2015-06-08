@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+
+<!--THE SIDEBAR -->
+<div id="sidebar" th:fragment="sidebar">
+    
+    <!--THE DEETS -->
+    <div id="profile_details">
+        
+        <!-- STATS -->
+        <div id="profile_stats_wrapper" class="stats_wrapper" th:replace="fragments/stats :: stats_wrapper"></div>
+
+        <!--BOTTOM BOXES -->
+        <div id="profile_inv">
+            <div id="profile_travelers" class="profile_inv_row">
+                <span id="traveler_count" th:text="${totalProfiles}">X</span>
+                <span>Other Travelers</span>
+            </div>
+            <div id="profile_location" class="profile_inv_row">
+                <span th:unless="${location == null}" 
+                      th:attr="data-id=${location.lid}"
+                      class="profile_location_wrap">
+                    <a href="#" id="location_link" 
+                       th:if="(${location.rpgcid == null} or ${location.rpgcid.rpgcid == profile.rpgcid.rpgcid})"
+                       th:text="${location.lname}">
+                        Enter
+                    </a>
+                    <span class="restricted_class"
+                          th:if="(${location.rpgcid != null} and ${location.rpgcid.rpgcid != profile.rpgcid.rpgcid})"
+                          th:text="${location.lname} + ' [' + ${location.rpgcid.rpgClass} + ' Only]'">
+                        Enter
+                    </span>
+                </span>
+                <span th:unless="${location != null}" class="profile_location_wrap">
+                    <span>Nothing of Note</span>
+                </span>
+            </div>
+            <div id="profile_bounty" class="profile_inv_row">
+                <div th:each="bounty : ${bounties}" 
+                     th:attr="data-id=${bounty.bid}"
+                     class="profile_bounty_wrap">
+                    <a href="#" class="tab_panel" 
+                       th:attr="id='tab_' + ${bounty.bid} + '_bounty'">
+                        <span class="bounty_name" th:text="${bounty.bname}">Bounty
+                        </span><span class="status" th:if="${bounty.status == 1}">[Engage]
+                        </span><span class="status" th:if="${bounty.status == 2}">[Dead]
+                        </span><span class="status" th:if="${bounty.status == 3}">[Cashed]
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--THE ACTIVITY LOG -->
+    <ul id="activity_log">
+        <li class="log_item" 
+            th:attr="data-alid=${activity.alid}" 
+            th:each="activity : ${activityLog}"
+            th:utext="${activity.getHtml()}">
+            Log Text
+        </li>
+    </ul>
+</div>
+
+<!--THE ACTUAL MAP -->
+<div id="content" class="sidebar" th:fragment="content">
+    <!-- Fragment Content Inserted Here -->
+    <div id="panel_map" class="panel">
+        <div class="row clearfix">
+            <div class="col-1-3 latitude_placeholder">
+                <div></div>
+            </div>
+            <div class="col-1-3" th:attr="data-rid=${lon.rid}" th:each="lon : ${lons}">
+                <div class="longitude" th:text="${lon.rname} + ' ' + ${lon.suffix}">Ashland Ave.</div>
+            </div>
+        </div>
+        <div class="row clearfix"  th:attr="data-rid=${lat.rid}" th:each="lat : ${lats}">
+            <div class="col-1-3 latitude">
+                <div class="latitude_text" th:text="${lat.rname} + ' ' + ${lat.suffix}">First St.</div>
+            </div>
+            <div class="col-1-3" th:attr="data-rid=${lon.rid}" th:each="lon : ${lons}">
+                <div class="square"
+                     th:classappend="(${lat.rid} == ${profile.ypos.rid} and ${lon.rid} == ${profile.xpos.rid}) ? 'user' : null">
+                    <span class="icon icon-star-full"
+                           th:if="(${lat.rid} == ${profile.ypos.rid} and ${lon.rid} == ${profile.xpos.rid})">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Inventory Section-->
+    <div id="panel_inventory" class="panel">
+        <div id="inventory_wrapper" class="table_wrapper">
+            <div class="inventory_title_row table_title_row clearfix">
+                <div class="table_title_section title_left">
+                    <span class="inventory_title">Inventory</span>
+                    <span class="icon icon-user"></span>
+                </div>  
+                <div class="table_title_section title_right">
+                    <span class="inventory_title" th:text="${profile.triste}"></span>
+                    <span class="icon icon-heart-broken"></span>
+                </div>
+            </div>
+
+            <table id="inventory_table"
+                   class="empty"
+                   th:unless="${inventory == null}">
+                <thead class="blue_grad">
+                    <tr>
+                        <th>Item</th>
+                        <th>Value</th>
+                        <th class="selectable">
+                            Type
+                            <ul class="header_list">
+                                <li class="inventory_type_item active" data-type-id="-1">All</li>
+                                <li class="inventory_type_item"
+                                    th:attr="data-type-id=${itype.itypeid}"
+                                    th:each="itype : ${itypes}"
+                                    th:text="${itype.formatted}">
+                                    Inventory Type
+                                </li>
+                            </ul>
+                        </th>
+                        <th><!--Use--></th>
+                        <th><!--Drop--></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!--Bounty Encounter-->
+    <div id="panel_bounty" class="panel">
+    </div>
+
+    <!--Perk Management-->
+    <div id="panel_perks" class="panel">
+        <div class="perk_row_title" 
+             th:text="${profile.rpgcid.rpgClass}">
+            RPG Class
+        </div>
+        <div class="perk_row clearfix">
+            <div class="perk_wrapper"
+                 th:each="perk: ${perks}"
+                 th:if="${perk.perk.rpgcid == profile.rpgcid}">
+                <div class="perk_item"
+                     th:attr="data-perkid=${perk.perk.perkid}"
+                     th:classappend="(${perk.isHasPerk()} ? 'purchased' : 'unpurchased')">
+                    <div class="perk_label" th:text="${perk.perk.perk}">Teleportation</div>
+                    <div class="perk_level">
+                        <span class="perk_level_num" th:text="${perk.perk.level}">5</span>
+                        <span class="perk_level_label">lvl</span>
+                    </div>
+                </div>
+                
+                <div class="perk_action" th:if="!${perk.isHasPerk()}">
+                    <div id="buy_perk" class="active" th:if="${perk.isCanBuy()}">Acquire Ability</div>
+                    <div class="inactive" th:if="!(${perk.isCanBuy()})">Requirements Not Met</div>
+                </div>
+<!-- Cool Down and Whatever -->
+                <div class="perk_action" th:if="${perk.isHasPerk()}">
+                    <div th:if="${perk.profilePerk.active == 0}">Inactive</div>
+                    <div th:if="${perk.profilePerk.active == 1}">Active</div>
+                    <div th:if="!${perk.profilePerk.isRecharged()}" id="perk_cooldown">
+                        <div class="timer_title">Cooldown</div>
+                        <div class="timer_content">
+                            <span id="t_min" class="t_content"></span>
+                            <label class="t_label"></label>
+                            <span id="t_sep" class="t_content">:</span>
+                            <span id="t_sec" class="t_content"></span>
+                            <label class="t_label"></label>
+                        </div>
+                    </div>
+                </div>
+
+<!--Required Offerings -->
+
+                <div class="perk_reqs_wrapper" th:if="!(${perk.isHasPerk()})">
+                    <ul class="perk_reqs">
+                        <li class="perk_req">
+                            <span class="offering_title">Level</span>
+                            <span class="offering_count" 
+                                  th:classappend="((${profile.level} > (${perk.perk.level} - 1)) ? 'yes' : 'no')"
+                                  th:text="${profile.level} + '/' + ${perk.perk.level}">
+                                Count
+                            </span>
+                        </li>
+                        <li th:each="offering : ${perk.offerings}"
+                            class="perk_req">
+                            <span class="offering_title" th:text="${offering.title}">Offering</span>
+                            <span class="offering_count" 
+                                  th:classappend="(${offering.isHasItem()} ? 'yes' : 'no')" 
+                                  th:text="${offering.profileCount} + '/' + ${offering.count}">
+                                Count
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="content">
+    <nav role="navigation">
+        <ul>
+            <li th:unless="${currentUser != null}"><a th:href="@{/login}">Log in</a></li>
+            <li th:unless="${currentUser != null}"><a th:href="@{/user/create}">Sign up</a></li>
+        </ul>
+    </nav>
+</div>
+
+</body>
+</html>

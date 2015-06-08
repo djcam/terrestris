@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+    
+    <script th:src="@{/js/jquery-2.1.3.min.js}"></script>
+    <script th:src="@{/js/pagination.js}"></script>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/sprite.css}" />
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/base.css}" />
+
+    <title th:if="${subTitle} == null" th:text="${mainTitle}">Template</title>
+    <title th:if="${subTitle} != null" th:text="${mainTitle} + ' - ' + ${subTitle}">Template</title>
+</head>
+<body>
+
+<div id="wrapper" class="extended_height">
+    <!-- Fragment Header Inserted Here -->
+    <div id="header" th:replace="fragments/default :: header"></div>
+    <!-- Fragment Content Inserted Here -->
+    <div id="content">
+        <div th:replace="${view} :: content"></div>
+    </div>
+    <!-- Fragment Footer Inserted Here -->
+    <div id="footer" th:replace="fragments/default :: footer"></div>
+</div>
+
+</body>
+</html>

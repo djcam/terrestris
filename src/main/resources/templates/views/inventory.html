@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div id="content" th:fragment="content">
+    <form th:action="@{/inventory/create}" method="post">
+        <button type="submit">Add Random Item</button>
+    </form>  
+
+	<div id="inventory_wrapper" class="table_wrapper">
+		<div class="inventory_title_row table_title_row clearfix">
+			<div class="table_title_section title_left">
+				<span class="inventory_title" th:text="${profile.handle}"></span>
+				<span class="icon icon-user"></span>
+			</div>	
+			<div class="table_title_section title_right">
+				<span class="inventory_title" th:text="${profile.triste}"></span>
+				<span class="icon icon-heart-broken"></span>
+			</div>
+		</div>
+
+		<table id="inventory_table"
+			   th:unless="${inventory == null}">
+			<thead class="blue_grad">
+				<tr>
+					<th>Item</th>
+					<th>Value</th>
+					<th class="selectable">
+						Type
+						<ul class="header_list">
+							<li class="inventory_type_item active" data-type-id="-1">All</li>
+							<li class="inventory_type_item"
+				    			th:attr="data-type-id=${itype.itypeid}"
+								th:each="itype : ${itypes}"
+								th:text="${itype.formatted}">
+								Inventory Type
+							</li>
+						</ul>
+					</th>
+					<th><!--Use--></th>
+					<th><!--Drop--></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="invItem, itr : ${inventory}"
+					th:class="${itr.odd} ? 'odd' : 'even'"
+					th:attr="data-type-id=${invItem.iid.itype.itypeid}">
+					<td>
+						<span class="item_name" th:text="${invItem.iid.item}"></span>
+						<span class="item_count" th:text="'(' + ${invItem.count} + ')'"></span>
+					</td>
+					<td>
+						<span class="item_name" th:text="${#numbers.formatDecimal(invItem.iid.value, 1, 0)}"></span>
+						<span class="item_count" th:text="'(' + (${invItem.count} * ${invItem.iid.value}) + ')'"></span>
+					</td>
+					<td>
+						<span class="item_name" th:text="${invItem.iid.itype.formatted}"></span>
+					</td>
+					<td class="use_cell">
+						<button class="center"
+							    th:if="${invItem.iid.itype.itypeid == 0}" 
+								th:attr="data-invid=${invItem.invid}">
+							Use
+						</button>
+					</td>
+					<td class="drop_cell">
+					    <form th:action="@{/inventory/remove}" method="post">
+					    	<input type="hidden" name="invid" th:value="${invItem.invid}" />
+					    	<div class="drop_wrapper clearfix">
+					    		<button class="drop_button" type="submit">Drop</button>
+						    	<select class="drop_select" name="count">
+									<option th:each="i : ${#numbers.sequence(1, invItem.count)}"
+											th:value="${i}"
+											th:text="${i}">
+										Quantity
+									</option>					    	
+								</select>
+		        			</div>
+	    				</form> 
+	    			</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</div>
+
+</body>
+</html>

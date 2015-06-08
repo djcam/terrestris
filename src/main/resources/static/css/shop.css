@@ -1,0 +1,30 @@
+.tables_wrapper {
+	width: 980px;
+	margin: 80px auto;
+	position: relative;
+	display: block;
+}
+
+div.tables_wrapper > div.table_wrapper {
+	float: left;
+	width: 450px;
+	margin: 0 20px;
+}
+
+td.total_target > span {
+	display: block;
+	position: relative;
+    color: #A97968;
+    background-color: #FFFFFF;
+    border-radius: 3px;
+    border: 1px solid #DDDDDD;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 8px;
+    text-align: right;
+}
+
+div#totals_wrapper {
+	width: 980px;
+	margin: 0 auto;
+}

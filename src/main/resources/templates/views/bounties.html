@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div id="content" th:fragment="content">
+
+	<div id="bounties_wrapper" class="list_wrapper">
+		
+		<div class="bounty_title_row table_title_row clearfix">
+			<div class="table_title_section title_left">
+				<span class="table_title" th:text="${location.lname}">Bounties</span>
+			</div>	
+			<div class="table_title_section title_right">
+				<button th:unless="${newBounties == 0}"
+						id="new_bounties" class="icon_button">
+					<label>New Bounties</label>
+					<span class="icon icon-download"></span>
+				</button>
+			</div>
+		</div>
+
+		<!-- NONEZO FUNZO-->
+	    <div class="empty_list white_grad" th:if="${#lists.isEmpty(bounties)}">
+	    	You have no active bounties.
+	    </div>
+
+	    <!-- MANY BOUNTIES -->
+	    <ul id="bounties_list" class="info-list clearfix">
+		    <li class="bounty_item white_grad"
+		        th:each="bounty, itr : ${bounties}"
+	    		th:attr="data-bid=${bounty.bid}"
+	    		th:classappend="${itr.odd ? 'even' : 'odd'} + ' status_' + ${bounty.status}">
+	    		
+	    		<div class="bounty_item_title clearfix">
+					<div class="table_title_section title_left">
+						<span class="capitalize" th:text="${bounty.bname}">Bname</span>
+					</div>	
+					<div class="table_title_section title_right">
+						<span th:text="${bounty.value}">Value</span>
+						<span class="icon icon-heart-broken"></span>
+					</div>
+				</div>
+
+				<div class="bounty_location">
+					<span class="bounty_road" th:text="${bounty.xpos.rname}">Xpos</span>
+					<span class="bounty_conjunction">and</span>
+					<span class="bounty_road" th:text="${bounty.ypos.rname}">Ypos</span>
+				</div>
+
+				<ul class="bounty_stats_list">
+					<li class="bounty_stat clearfix">
+		    			<label>Stamina</label>
+		    			<span th:text="${bounty.sp} + '/' + ${bounty.maxsp}">Stamina</span>
+		    		</li>
+					<li class="bounty_stat clearfix">
+		    			<label>Evasion</label>
+		    			<span th:text="${bounty.evasion}">Evasion</span>
+		    		</li>
+		    		<li class="bounty_stat clearfix">
+		    			<label>Mvcost</label>
+		    			<span th:text="${bounty.mvcost}">Mvcost</span>
+		    		</li>
+					<li class="bounty_stat clearfix">
+		    			<label>Experience</label>
+		    			<span th:text="${bounty.xp}">Experience</span>
+		    		</li>
+		    	</ul>
+	    		
+	    		<!--STATUS OF THE BOUNTY -->
+	    		<span class="bounty_status_wrap"
+	    		      th:unless="(${bounty.pid == null} or ${profile == null})">
+	    			<form th:if="(${profile.pid == bounty.pid.pid} and ${bounty.status == 2})"
+	    				  th:action="@{/bounty/cash}" 
+	    				  method="post">
+				        	<input type="hidden" th:value="${bounty.bid}" name="bid" />
+				            <button class="icon_button green_grad" type="submit">
+				            	<label>Cash</label>
+				            	<span class="icon icon-download"></span>
+				            </button>
+				    </form>
+				   	<div class="bounty_status active clear_fix" 
+				   	     th:if="(${profile.pid == bounty.pid.pid} and ${bounty.status == 1})">
+	    				<label>Active</label>
+	    				<span class="icon icon-target"></span>
+				    </div>
+				    <div class="bounty_status cashed clearfix"
+				    	 th:if="(${profile.pid == bounty.pid.pid} and ${bounty.status == 3})">
+				    	<label>Cashed</label>
+	    				<span class="icon icon-checkmark"></span>
+				    </div>
+			    </span>
+	    	</li>
+	    </ul>
+	</div>
+</div>
+
+</body>
+</html>

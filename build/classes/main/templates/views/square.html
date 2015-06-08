@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div id="content" th:fragment="content">
+
+    <h1>Square</h1>
+    <h2 th:text="${lat.rname}">Latitude</h2>
+    <h2 th:text="${lon.rname}">Longitude</h2>
+
+    <h3 th:unless="${location == null}">
+    	<span th:text="${location.lname}">Location</span>
+    	<a href="#" th:href="@{/location?lid={lid}(lid=${location.lid})}">Enter</a>
+    </h3>
+
+    <!--Bounties-->
+    <ul id="bounty_list">
+    	<li th:each="bounty : ${bounties}"
+    		th:attr="data-bid=${bounty.bid}">
+    		<span th:text="${bounty.bname}">
+    			Bounty Item
+    		</span>
+	    	<span class="bounty_action"
+	    		  th:if="${bounty.status == 0}">
+			    <a href="#" class="bounty_claim">
+			    	Claim
+			    </a>
+			</span>
+	    	<span class="bounty_action"
+	    		  th:unless="${bounty.pid == null}">
+				<a href="#" class="bounty_cash"
+				   th:if="(${profile.pid == bounty.pid.pid} and ${bounty.status == 2})">
+					Cash
+				</a>
+				<a href="#" class="bounty_strike"
+				   th:if="(${profile.pid == bounty.pid.pid} and ${bounty.status == 1})">
+					Strike
+				</a>
+				<a href="#" class="bounty_cast"
+				   th:if="(${profile.pid == bounty.pid.pid} and ${bounty.status == 1})">
+					Cast
+				</a>
+				<span th:if="(${profile.pid == bounty.pid.pid} and ${bounty.status == 3})">
+					Cashed
+				</span>
+			</span>
+    	</li>
+    </ul>
+
+    <!--User Profiles-->
+    <ul>
+    	<li th:each="userProfile : ${userProfiles}"
+    		th:text="${userProfile.handle} + ' level ' + ${userProfile.level} + ' ' + ${userProfile.rpgcid.rpgClass}">
+    		UserProfile
+    	</li>
+    </ul>
+
+</div>
+
+</body>
+</html>

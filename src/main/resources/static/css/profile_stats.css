@@ -1,0 +1,121 @@
+/*** SIDEBAR TOP ***/
+#profile_stats_wrapper .profile_r1,
+#profile_stats_wrapper .profile_title {
+    height: 60px;
+}
+.user_item .profile_r1 {
+    float: left;
+}
+.user_item .profile_r1,
+.user_item .profile_title { 
+    height: 36px;
+}
+#profile_stats_wrapper .profile_level {
+    line-height: 45px;
+    height: 50px;
+    width: 50px;
+    font-size: 30px;
+    border-radius: 30px;
+    margin: 5px 15px 5px 0;
+    border: 2px solid #34495E;
+}
+.user_item .profile_level  {
+    line-height: 24px;
+    width: 26px;
+    height: 26px;
+    font-size: 16px;
+    border-radius: 13px;
+    margin: 5px 5px 5px 0;
+    border: 1px solid #34495E;
+}
+#profile_stats_wrapper .profile_handle {
+    height: 40px;
+    line-height: 40px;
+    font-size: 30px;
+}
+.user_item .profile_handle {
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+}
+.profile_title {
+    float: left;
+    display: block;
+    position: relative;
+}
+.profile_level {
+    display: block;
+    position: relative;
+    float: left;
+    background-color: #FFFFFF;
+    color: #34495E;
+    text-align: center;
+    font-family: open-sans, monospace;
+}
+.profile_handle {
+    color: #555555;
+    font-weight: 400;
+    text-shadow: -1px -1px 0 rgba(0,0,0,0.1);
+}
+.profile_class {
+    color: #999999;
+    text-transform: capitalize;
+}
+.user_item .profile_class {
+    height: 16px;
+    line-height: 16px;
+    font-size: 11px;
+}
+
+/*** STATS ***/
+#profile_stats {
+  margin: 15px 0;
+}
+.progress_wrapper {
+  display: block;
+  position:relative;
+  margin: 8px 0 2px;
+  height: 8px;
+
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  
+  box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.15) inset;
+  -moz-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.15) inset;
+  -webkit-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.15) inset;
+
+}
+.progress_content {
+  height: 8px;
+  
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+}
+.green {
+    background-color: #90C695;
+}
+.blue {
+    background-color: #34495E;
+}
+.orange {
+    background-color: #FDE3A7;
+}
+
+.stats_labels {
+    font-size: 10px;
+    color: #AAAAAA;
+    height: 14px;
+    line-height: 14px;
+}
+.stats_label {
+    height: 14px;
+    line-height: 14px;
+}
+.stats_label.text {
+    float: left;
+}
+.stats_label.digits {
+    float: right;
+}

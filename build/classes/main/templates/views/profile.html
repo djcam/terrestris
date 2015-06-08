@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="content">
+
+    <form id="profile_form" th:action="@{/map}" method="post">
+        <input id="pid" type="hidden" name="pid" />
+        <section id="pricing-table">
+            <div class="container">
+                <div class="row">
+                    <div class="pricing clearfix">
+
+                        <div th:each="profile : ${profiles}" class="pricing-col">
+                            <div th:unless="${profile.rpgcid == null}" class="pricing-table profile">
+                                <div th:attr="data-pid=${profile.pid}" class="pricing-header footer_grad">
+                                    <div class="pricing-title"  th:text="${profile.handle}">Handle</div>
+                                    <div class="pricing-rate">
+                                        <span class="level" th:text="${profile.level}">Level</span><span class="level-label">lvl</span>
+                                    </div>
+                                    <div class="pricing-class" th:text="${profile.rpgcid.rpgClass}">Class</div>
+                                </div>
+
+                                <div class="pricing-list">
+                                    <ul>
+                                        <li>
+                                            <span class="pricing-list-icon icon icon-heart-broken"></span> 
+                                            <span class="pricing-list-value" th:text="${profile.triste}">10</span>
+                                            <span class="pricing-list-label">triste</span>
+                                        </li>
+                                        <li th:each="stat : ${profile.profileStats}">
+                                            <span class="pricing-list-icon icon" th:classappend="${stat.stid.icon}"></span> 
+                                            <span class="pricing-list-value" th:text="${stat.getValue()}">10</span>
+                                            <span class="pricing-list-label" th:text="${stat.stid.title}">experience</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div th:unless="${profile.rpgcid != null}" class="pricing-table placeholder">
+                                <a href="#" th:href="@{/profile/create}" class="profile_create">New</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </form>
+
+</div>
+</body>
+</html>

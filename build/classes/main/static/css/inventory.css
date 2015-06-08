@@ -1,0 +1,12 @@
+div#inventory_wrapper {
+	width: 800px;
+}
+
+span.item_name {
+	margin-right: 8px;
+	text-transform: capitalize;
+	color: #1E2E36;
+}
+span.item_count {
+	color: #DDC387
+}

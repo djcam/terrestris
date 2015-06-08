@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<!--Fragment Head Inserted Here -->
+<head th:replace="fragments/default :: head"></head>
+<body>
+
+<div id="wrapper">
+      <!-- Fragment Header Inserted Here -->
+      <div id="header" th:replace="fragments/default :: header"></div>
+      <!-- Fragment Content Inserted Here -->
+      <div id="content" class="full_width">
+            <div th:replace="${view} :: content"></div>
+      </div>
+      <!-- Fragment Footer Inserted Here -->
+      <div id="footer" th:replace="fragments/default :: footer"></div>
+</div>
+
+</body>
+</html>
